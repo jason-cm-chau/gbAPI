@@ -15,7 +15,7 @@ function showSearch(ele) {
         localStorage.setItem("search", name);
         localStorage.setItem("route", true);
         window.location.href = window.location.href.replace(
-            "/gbAPI/index.html", "/gbAPI/find_your_car.html"
+            "gbAPI/", "gbAPI/find_your_car.html"
         )
     }
 }
