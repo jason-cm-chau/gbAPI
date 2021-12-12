@@ -25,5 +25,5 @@ function showSearchBtn() {
     var name = ele.value.split(' ');
     localStorage.setItem("search", name);
     localStorage.setItem("route", true);
-    window.location.href = `${window.location.origin}/find_your_car.html`
+    window.location.href = `${window.location.origin}/gbAPI/find_your_car.html`
 }
