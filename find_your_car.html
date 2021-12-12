@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/0fbdcf3b18.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="container">
+        <nav class="row">
+            <figure class="logo">
+                <a href="index.html">
+                    <img src="./assets/blinker-icon.4f9b2663.png" class="logo--img" alt="">
+                </a>
+            </figure>
+
+            <div class="nav__list">
+                <div class="nav__links">
+                    <a href="index.html" class="nav__link
+                    link__hover--effect purple">Home</a>
+                </div>
+                <div class="nav__links">
+                    <a href="find_your_car.html" class="nav__link
+                    link__hover--effect">Search Books</a>
+                </div>
+                <div class="nav__links">
+                    <a href="" class="btn-contact">Contact</a>
+                </div>
+            </div>
+        </nav>
+        <div class="find__landing-page">
+            <h1 class="find__landing--title">Browse</h1>
+            <div class="searchbar">
+                <input type="text" class="search" placeholder="Search"
+                onkeydown="search(this)" onclick="emptySearch()">
+                
+                <button class="btn-find" onclick="findBook()">
+                    <i class="fas fa-search find-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <section class="page">
+        <div class="results row">
+            <h2 class="results__title">Search results:</h2>
+            <div class="filter__wrapper">
+                <!-- <div class="filter" role="slider" aria-valuemin="0"
+                aria-valuemax="5" aria-orientation="horizontal">
+
+                </div> -->
+            </div>
+        </div>
+        <div id="content">
+        </div>
+        <script src="find_your_car.js"></script>
+
+        
+    </section>
+</body>
+
+</html>

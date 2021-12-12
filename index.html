@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/0fbdcf3b18.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+
+</head>
+
+<body>
+    <header class="container">
+        <nav class="row">
+            <figure class="logo">
+                <a href="index.html">
+                    <img src="./assets/blinker-icon.4f9b2663.png" class="logo--img" alt="">
+                </a>
+            </figure>
+
+            <div class="nav__list">
+                <div class="nav__links">
+                    <a href="index.html" class="nav__link
+                    link__hover--effect purple">Home</a>
+                </div>
+                <div class="nav__links">
+                    <a href="find_your_car.html" class="nav__link
+                    link__hover--effect">Search Books</a>
+                </div>
+                <div class="nav__links">
+                    <a href="" class="btn-contact">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="landing_page">
+        <div class="landing_page--desc">
+            <h1 class="landing_page--title purple">
+                Australia's most awarded book subscription platform
+            </h1>
+            <h2 class="landing_page--sub-title">
+                FIND YOUR FAVORITE BOOK WITH 
+                <span class="purple">
+                    BLINKER
+                </span>
+            </h2>
+            <div class="searchbar">
+                <input type="text" class="search"placeholder="Search"
+                onkeydown="showSearch(this)">
+                <button class="btn-search" onclick="clickSearchBtn()">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-spinner"></i>
+                </button>
+            </div>
+        </div>
+        <figure class="landing_page-img--wrapper">
+            <img src="./assets/building.681ea6bf.png" alt="" class="landing_page-img">
+        </figure>
+    </section>
+</body>
+
+</html>
