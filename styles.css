@@ -6,7 +6,7 @@
 }
 
 .container{
-    padding: 24px 0;
+    padding: 2em 0;
 }
 
 .row{
@@ -23,18 +23,31 @@ a{
     color: #6030b1;
 }
 
+.flex__column--align{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flex__justify--align{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* 
     NAV
  */
 
 .logo--img{
-    width: 160px;
+    width: 8em;
+    padding-left: 1em;
 }
 
 nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 0.5em;
 }
 
 .nav__list{
@@ -42,15 +55,16 @@ nav{
 }
 
 .nav__links{
-    padding: 0 24px;
-    font-size: 20px;
+    padding: 0 1em;
+    font-size: 1.2em;
 }
 
 .btn-contact{
-    border-radius: 30px;
+    border-radius: 2em;
     background-color: #6030b1;
     color: #fff;
-    padding: 8px 24px;
+    padding: 0.25em 1em;
+    font-size: 1em;
 }
 
 .btn-contact:hover{
@@ -59,50 +73,41 @@ nav{
 }
 
 #landing_page{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
-    padding: 16px 0;
+    padding: 1rem 0;
 }
 
 .landing_page--desc{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
     max-width: 800px;
 }
 
 .landing_page--title{
-    font-size: 56px;
-    padding-bottom: 24px;
+    font-size: 3em;
+    padding-bottom: 0.5em;
 }
 
 .landing_page--sub-title{
-    padding-bottom: 16px;
+    padding-bottom: 0.5em;
 }
 
 .landing_page-img{
-    width: 700px;
+    width: 40em;
 }
 
 .searchbar{
-    display: flex;
     width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
+    padding: 1em 0;
     position: relative;
 }
 
 .search{
     width: 100%;
-    max-width: 500px;
-    margin-right: 16px;
-    padding: 16px;
-    border-radius: 16px;
-    font-size: 20px;
+    max-width: 25em;
+    margin-right: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 1.5em;
 }
 
 .btn-search{
@@ -110,9 +115,9 @@ nav{
     color: #fff;
     border: none;
 
-    padding: 14px 60px;
-    border-radius: 16px;
-    font-size: 30px;
+    padding: 0.5em 1.25em;
+    border-radius: 0.75em;
+    font-size: 2em;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.45);
     position: relative;
 }
@@ -171,12 +176,13 @@ nav{
 /* FIND YOUR CAR PAGE  */
 
 .find__landing-page{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 40px 0;
+    padding: 3em 0;
     background-color: lightblue;
+    width: 100%;
+}
+.page{
+    width: 100%;
 }
 
 .btn-find{
@@ -186,14 +192,11 @@ nav{
     height: 30px;
     position: inherit;
     right: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: none;
 }
 
 .find-search{
-    font-size: 30px;
+    font-size: 2em;
 }
 
 .btn-find:hover{
@@ -201,9 +204,9 @@ nav{
     color: #ff328f;
 }
 
-/* #content{
-    animation: slide 800ms ease;
-} */
+#content{
+    width: 100%;
+}
 
 @keyframes slide {
     0%{
@@ -216,35 +219,39 @@ nav{
 
 .books{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, calc(100vw/4));
     gap: 1rem;
     width: 100%;
 }
 
 .book{
   
-    height: 300px;
+    height: 20em;
     
-    border: 2px solid rgba(0, 0, 0, 0.2);
+    outline: 2px solid rgba(0, 0, 0, 0.2);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: space-around;
     animation: slide 800ms ease;
-    
 }
 
 .book__thumbnail{
-    height: 160px;
+    height: 10em;
     transform: scale(1);
     transition: all 300ms ease;
+    outline: 2px solid rgba(0,0,0,0.1);
+}
+
+.book__para{
+    padding: 0 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 15em;
 }
 
 .book__desc{
-    padding: 0px 8px;
-    text-align: center;
+    gap: 1rem;
 }
 
 .ratings{
@@ -255,18 +262,84 @@ nav{
     display: flex;
     justify-content: space-between;
 }
-.filter{
-    width: 200px;
-    height: 15px;
-    border: 2px solid black;
-    background-color: black;
-}
+
 
 .results__title{
-    padding-bottom: 16px;
+    padding-bottom: 1rem;
+    margin-left:1rem;
 }
 
 
 .book__thumbnail:hover{
     transform: scale(1.1);
+}
+
+@media(max-width:768px){
+    a{
+        font-size: 0.8;
+    }
+   p{
+       font-size: 1em;
+   }
+    .nav__links{
+        padding: 0 0.8em;
+    }
+    .search{
+        margin-right: 0px;
+        margin-left: 1em;
+
+        padding: 0.5em;
+    }
+    .row{
+       max-width: 90%;
+    }
+    .books{
+        grid-template-columns: 100%;
+        /* width: 100vw; */
+    }
+    .book{
+        display: flex;
+        flex-direction: row;
+        margin: 0 0.25em;
+        width: 100%;
+    }
+    .book__desc{
+        width: 30em;
+    }
+    .book__thumbnail{
+        width: 8em;
+        margin-left: 1em;
+    }
+    .book__para{
+        overflow:hidden;
+        white-space:pre-wrap;
+        text-overflow: ellipsis;
+        max-width: 25em;
+    }
+}
+
+@media(max-width:550px){
+    p{
+        font-size: 1em;
+    }
+    a{
+        font-size: 0.8em;
+    }
+    .row{
+        max-width: 95%;
+    }
+    /* .logo--img{
+        width: 8em;
+        padding-left: 8px;
+    } */
+    .nav__links{
+        padding: 0 0.5em;
+    }
+    .search{
+        margin-left: 1em;
+        width: 20em;
+    }
+    .btn-contact{
+        font-size: 0.8em;
+    }
 }

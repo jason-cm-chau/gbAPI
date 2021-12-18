@@ -77,6 +77,7 @@ function handleResponse(file) {
     for (var i = 0; i < file.items.length; i++) {
         var div = document.createElement("div");
         div.classList.add("book");
+        div.classList.add("flex__column--align");
 
         var item = file.items[i];
 
@@ -104,13 +105,21 @@ function handleResponse(file) {
         var ratingsDiv = calculateStars(item);
 
         var p = document.createElement("p");
-        p.classList.add("book__desc");
+        p.classList.add("book__para");
         p.innerHTML = item.volumeInfo.title;
         hyperlink.appendChild(p);
 
+        var desc = document.createElement("div");
+        desc.classList.add("book__desc");
+        desc.classList.add("flex__column--align");
+
+        desc.appendChild(ratingsDiv);
+        desc.appendChild(hyperlink);
+
+        // div.appendChild(hyperlink2);
+        // div.appendChild(ratingsDiv);
         div.appendChild(hyperlink2);
-        div.appendChild(ratingsDiv);
-        div.appendChild(hyperlink);
+        div.appendChild(desc);
 
         document.getElementById("content").appendChild(div);
     }
