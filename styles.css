@@ -219,7 +219,7 @@ nav{
 
 .books{
     display: grid;
-    grid-template-columns: repeat(4, calc(100vw/4));
+    grid-template-columns: repeat(4,calc(100%/4));
     gap: 1rem;
     width: 100%;
 }
