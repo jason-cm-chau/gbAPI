@@ -5,6 +5,9 @@
     box-sizing: border-box;
 }
 
+header{
+    width:100vw;
+}
 .container{
     padding: 2em 0;
 }
@@ -47,7 +50,8 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 0.5em;
+    padding: 1em;
+    width: 100vw;
 }
 
 .nav__list{
@@ -75,6 +79,7 @@ nav{
 #landing_page{
     text-align: center;
     padding: 1rem 0;
+    width: 100vw;
 }
 
 .landing_page--desc{
@@ -219,9 +224,9 @@ nav{
 
 .books{
     display: grid;
-    grid-template-columns: repeat(4,calc(100%/4));
+    grid-template-columns: repeat(4,calc(90%/4));
     gap: 1rem;
-    width: 100%;
+    margin-left: 1rem;
 }
 
 .book{
@@ -247,7 +252,7 @@ nav{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: 15em;
+    width: 12em;
 }
 
 .book__desc{
@@ -285,7 +290,6 @@ nav{
         padding: 0 0.8em;
     }
     .search{
-        margin-right: 0px;
         margin-left: 1em;
 
         padding: 0.5em;
@@ -314,7 +318,8 @@ nav{
         overflow:hidden;
         white-space:pre-wrap;
         text-overflow: ellipsis;
-        max-width: 25em;
+        width: 20em;
+        font-size: 14px;
     }
 }
 
@@ -328,16 +333,13 @@ nav{
     .row{
         max-width: 95%;
     }
-    /* .logo--img{
-        width: 8em;
-        padding-left: 8px;
-    } */
     .nav__links{
         padding: 0 0.5em;
     }
     .search{
         margin-left: 1em;
-        width: 20em;
+        width: 18em;
+        font-size: 20px;
     }
     .btn-contact{
         font-size: 0.8em;
