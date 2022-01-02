@@ -1,4 +1,5 @@
 function clear(){
+    //removes all books everytime user searches
     const books = document.getElementById("content");
     while(books.lastElementChild)
     {
@@ -7,11 +8,13 @@ function clear(){
 }
 
 if(localStorage.getItem("route")){
-    var book = localStorage.getItem("search");
-    var item = book.split(',');
-    console.log(item);
+    //checks if user had inputed a value from homepage and takes the value to search through database
+    var book = localStorage.getItem("search"); 
+    var item = book.split(','); //value taken from user is comma seperated depending on the # of words, so this seperates elements by ,
     var direct = "https://www.googleapis.com/books/v1/volumes?q=";
-    for (var x = 0; x < item.length; x++) {
+
+    //loop through each element of item and add it onto the direct
+    for (var x = 0; x < item.length; x++) { 
         direct += item[x];
         if (x < (item.length - 1)) {
             direct += "+";
@@ -41,6 +44,7 @@ function search(ele) {
                 direct += "+";
             }
         }
+        console.log(direct)
         bookAPI(direct);
     }
 }
@@ -72,102 +76,61 @@ async function bookAPI(result) {
     handleResponse(file);
 }
 
-
-function handleResponse(file) {
-    for (var i = 0; i < file.items.length; i++) {
-        var div = document.createElement("div");
-        div.classList.add("book");
-        div.classList.add("flex__column--align");
-
-        var item = file.items[i];
-
-        var hyperlink = document.createElement("a");
-        var bookLink = item.volumeInfo.infoLink;
-
-        hyperlink.classList.add("book__link");
-        hyperlink.classList.add("link__hover--effect");
-        hyperlink.href = `${bookLink}`;
-        hyperlink.target = "_blank";
-
-        var hyperlink2 = document.createElement("a");
-
-        // hyperlink2.classList.add("book__link");
-        hyperlink2.href = `${bookLink}`;
-        hyperlink2.target = "_blank";
-
-
-        var img = document.createElement("img");
-        img.src = item.volumeInfo.imageLinks.thumbnail;
-        img.classList.add("book__thumbnail");
-
-        hyperlink2.appendChild(img);
-
-        var ratingsDiv = calculateStars(item);
-
-        var p = document.createElement("p");
-        p.classList.add("book__para");
-        p.innerHTML = item.volumeInfo.title;
-        hyperlink.appendChild(p);
-
-        var desc = document.createElement("div");
-        desc.classList.add("book__desc");
-        desc.classList.add("flex__column--align");
-
-        desc.appendChild(ratingsDiv);
-        desc.appendChild(hyperlink);
-
-        // div.appendChild(hyperlink2);
-        // div.appendChild(ratingsDiv);
-        div.appendChild(hyperlink2);
-        div.appendChild(desc);
-
-        document.getElementById("content").appendChild(div);
-    }
+function bookToHtml(book){
+    return `
+    <div class="book flex__column--align">
+        <a href=${book.volumeInfo.infoLink} target="_blank">
+        ${book.volumeInfo.imageLinks !==undefined ? `<img src=${book.volumeInfo.imageLinks.thumbnail} class=""book__thumbnail></img>`: 'Thumbnail doesnt exist'}
+            
+        </a>
+        <div class="book__desc flex__column--align">
+            ${calculateStars(book)}
+            <a class="book__link link__hover--effect"
+            href=${book.volumeInfo.infoLink} target="_blank">
+            <p class="book__para">${book.volumeInfo.title}</p>
+            </a>
+        </div>
+    </div>
+    `
 }
 
+function handleResponse(file) {
+    const {items} = file
+    const content = document.getElementById("content")
+    content.innerHTML = items.map((book)=> bookToHtml(book)).join("")
+}
+
+function starsToHtml(stars, ratings){
+    return `<div class="ratings">
+    ${stars.join("").split(',')}
+    <p>(${ratings})</p>
+    </div>`
+}
 function calculateStars(item) {
     var ratings =
         item.volumeInfo.averageRating === undefined ? 0 : item.volumeInfo.averageRating;
-    var ratingsDiv = document.createElement("div");
-    ratingsDiv.classList.add("ratings");
 
-    if (ratings === 0) {
+    if (ratings === 0) { //if no ratings create 5 empty stars
+        const stars = []
         for (var x = 0; x < 5; x++) {
-            var emptyStar = document.createElement("i");
-            emptyStar.classList.add("far");
-            emptyStar.classList.add("fa-star");
-
-            ratingsDiv.appendChild(emptyStar);
+            stars.push(`<i class="far fa-star"></i>`)
         }
+        return starsToHtml(stars, ratings)
     }
     else {
+        const stars = []
+        //create filled star for the number of ratings
         for (var x = 0; x < Math.floor(ratings); x++) {
-            var filledStar = document.createElement("i");
-
-            filledStar.classList.add("fas");
-            filledStar.classList.add("fa-star");
-            ratingsDiv.appendChild(filledStar);
+            stars.push(`<i class="fas fa-star"></i>`)
         }
 
         if (ratings - Math.floor(ratings) > 0) {
-            var halfStar = document.createElement("i");
-            halfStar.classList.add("fas");
-            halfStar.classList.add("fa-star-half-alt");
-            ratingsDiv.appendChild(halfStar);
+            stars.push(`<i class="fas fa-star-half-alt"></i>`)
         }
-        var missingStars = 5 - ratingsDiv.childElementCount;
+         var missingStars = 5 - stars.length;
         for (var y = 0; y < missingStars; y++) {
-            var emptyStar = document.createElement("i");
-            emptyStar.classList.add("far");
-            emptyStar.classList.add("fa-star");
-
-            ratingsDiv.appendChild(emptyStar);
+            stars.push(`<i class="far fa-star"></i>`)
         }
+        return starsToHtml(stars, ratings)
     }
-    var starNum = document.createElement("p");
-    starNum.innerHTML = `(${ratings})`;
-    ratingsDiv.appendChild(starNum);
-
-
-    return ratingsDiv;
 }
